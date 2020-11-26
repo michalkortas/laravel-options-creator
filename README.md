@@ -20,7 +20,7 @@ Wrap your select with new tag
 
 ```
   <x-optionscreator-select
-      url="{{route('your.route')}}"
+      url="{{route('store.api.route')}}"
       component="components.subEditForm"
       successValueKey="id"
       successTextKey="name"
