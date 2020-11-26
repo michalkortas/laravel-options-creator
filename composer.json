@@ -1,0 +1,27 @@
+{
+    "name": "michalkortas/laravel-options-creator",
+    "description": "Wrapper that helps dynamic options creation at select element",
+    "type": "laravel-library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Michal Kortas",
+            "email": "michal@webroad.pl"
+        }
+    ],
+    "autoload":  {
+        "psr-4": {
+            "michalkortas\\LaravelOptionsCreator\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "michalkortas\\LaravelOptionsCreator\\LaravelOptionsCreatorServiceProvider"
+            ]
+        }
+    },
+
+    "minimum-stability": "dev",
+    "require": {}
+}
