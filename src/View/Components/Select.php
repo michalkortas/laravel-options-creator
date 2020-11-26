@@ -52,7 +52,7 @@ class Select extends Component
     /**
      * @var int|int
      */
-    private $setNewValue;
+    public $setNewValue;
 
     public function __construct(
         string $url = null,
