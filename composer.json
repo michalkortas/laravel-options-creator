@@ -1,6 +1,6 @@
 {
     "name": "michalkortas/laravel-options-creator",
-    "description": "Wrapper that helps dynamic options creation at select element",
+    "description": "Wrapper that helps create options at select element dynamically",
     "type": "laravel-library",
     "license": "MIT",
     "authors": [
