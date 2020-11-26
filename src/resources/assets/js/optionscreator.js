@@ -34,6 +34,8 @@ function initOptionsCreator(config) {
     }
 
     function storeCall(uuid) {
+        const section = document.querySelector(`.optionscreator[data-uuid="${uuid}"]`);
+        const url = section.getAttribute('data-url');
         const form = document.querySelector(`.optionscreator-form[data-uuid="${uuid}"]`);
 
         if(form === null)
