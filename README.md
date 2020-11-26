@@ -38,7 +38,8 @@ You can use some parameters to configure modal.
       saveButtonTitle="Create new option"
       loadingText="Please wait..."
       successText="<strong>New option has beed added</strong> to your select tag."
-      errorText="<strong>Error occurred</strong>. Check console log.">
+      errorText="<strong>Error occurred</strong>. Check console log."
+      setNewValue="1">
 
       <select name="mySelect">
         <option>Select value</option>
