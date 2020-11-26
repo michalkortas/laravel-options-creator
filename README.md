@@ -9,7 +9,7 @@ Wrapper that helps create options at select element dynamically
 composer require michalkortas/laravel-options-creator
 ```
 ```
-php artisan vendor:publish --tag=opc --force
+php artisan vendor:publish --tag=optionscreator --force
 ```
 
 
