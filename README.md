@@ -13,11 +13,12 @@ php artisan vendor:publish --tag=public
 
 # Usage
 
-Add new stack before end of <body> tag.
+Add new stacks before end of <body> tag.
 
 ```
 <body>
   ...
+  @stack('scripts')
   @stack('optionscreator')
 </body>
 ```
