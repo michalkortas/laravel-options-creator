@@ -50,9 +50,9 @@ class Select extends Component
      */
     public $successValueKey;
     /**
-     * @var int|string
+     * @var int|int
      */
-    public $setNewValue;
+    private $setNewValue;
 
     public function __construct(
         string $url = null,
@@ -64,7 +64,7 @@ class Select extends Component
         string $errorText = 'Error occurred...',
         string $successTextKey = 'id',
         string $successValueKey = 'name',
-        string $setNewValue = 1
+        int $setNewValue = 1
     )
     {
         $this->url = $url;
