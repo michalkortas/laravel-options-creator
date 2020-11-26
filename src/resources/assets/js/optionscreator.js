@@ -34,16 +34,6 @@ function initOptionsCreator(config) {
     }
 
     function storeCall(uuid) {
-        const section = document.querySelector(`.optionscreator[data-uuid="${uuid}"]`);
-
-        if(section === null)
-            throw new Error(`Options Creator section with UUID: ${uuid} not found!`);
-
-        const url = section.getAttribute('data-url');
-
-        if(url === null)
-            throw new Error(`URL for UUID: ${uuid} cannot be empty`);
-
         const form = document.querySelector(`.optionscreator-form[data-uuid="${uuid}"]`);
 
         if(form === null)
@@ -55,20 +45,21 @@ function initOptionsCreator(config) {
     function responseCallback(response) {
         let jsonData = response.data;
 
-        let input = document.querySelector(`.optionscreator[data-uuid="${config.uuid}"] .optionscreator-input-section select`);
+        let inputs = document.querySelectorAll(`.optionscreator[data-uuid="${config.uuid}"] .optionscreator-input-section select`);
 
-        let newOption = document.createElement("option");
-        newOption.text = jsonData[config.successTextKey];
-        newOption.value = jsonData[config.successValueKey];
+        for (const input of inputs) {
+            let newOption = document.createElement("option");
+            newOption.text = jsonData[config.successTextKey];
+            newOption.value = jsonData[config.successValueKey];
 
-        input.appendChild(newOption);
-        input.value = newOption.value;
+            input.appendChild(newOption);
+            input.value = newOption.value;
 
-        let modal = document.getElementById(`optionscreator_modal_${config.uuid}`);
-        $(modal).modal('hide');
+            let modal = document.getElementById(`optionscreator_modal_${config.uuid}`);
+            $(modal).modal('hide');
 
-        showSuccessMessage(config.successText);
-
+            showSuccessMessage(config.successText);
+        }
     }
 
     function errorCallback(e, ) {
@@ -92,24 +83,36 @@ function initOptionsCreator(config) {
     }
 
     function showSuccessMessage(message = '') {
-        const element = document.querySelector(`.optionscreator-success[data-uuid="${config.uuid}"]`);
-        element.classList.remove('d-none');
-        element.innerHTML = message;
+        const elements = document.querySelectorAll(`.optionscreator-success[data-uuid="${config.uuid}"]`);
+
+        for (const element of elements) {
+            element.classList.remove('d-none');
+            element.innerHTML = message;
+        }
     }
 
     function hideSuccessMessage() {
-        const element = document.querySelector(`.optionscreator-success[data-uuid="${config.uuid}"]`);
-        element.classList.add('d-none');
+        const elements = document.querySelectorAll(`.optionscreator-success[data-uuid="${config.uuid}"]`);
+
+        for (const element of elements) {
+            element.classList.add('d-none');
+        }
     }
 
     function showErrorMessage(message = '') {
-        const element = document.querySelector(`.optionscreator-danger[data-uuid="${config.uuid}"]`);
-        element.classList.remove('d-none');
-        element.innerHTML = message;
+        const elements = document.querySelectorAll(`.optionscreator-danger[data-uuid="${config.uuid}"]`);
+
+        for (const element of elements) {
+            element.classList.remove('d-none');
+            element.innerHTML = message;
+        }
     }
 
     function hideErrorMessage() {
-        const element = document.querySelector(`.optionscreator-danger[data-uuid="${config.uuid}"]`);
-        element.classList.add('d-none');
+        const elements = document.querySelectorAll(`.optionscreator-danger[data-uuid="${config.uuid}"]`);
+
+        for (const element of elements) {
+            element.classList.add('d-none');
+        }
     }
 }
