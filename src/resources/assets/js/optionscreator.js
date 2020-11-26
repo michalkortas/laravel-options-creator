@@ -56,7 +56,7 @@ function initOptionsCreator(config) {
 
             input.appendChild(newOption);
 
-            if(config.setNewValue !== undefined && config.setNewValue !== null && config.setNewValue === 1)
+            if(config.setNewValue !== undefined && config.setNewValue !== null && parseInt(config.setNewValue) === 1)
                 input.value = newOption.value;
 
             let modal = document.getElementById(`optionscreator_modal_${config.uuid}`);
