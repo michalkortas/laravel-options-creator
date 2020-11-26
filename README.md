@@ -3,7 +3,13 @@ Wrapper that helps create options at select element dynamically
 
 # Installation
 
-` composer require michalkortas/laravel-options-creator `
+``` 
+composer require michalkortas/laravel-options-creator
+```
+```
+php artisan vendor:publish --tag=public
+```
+
 
 # Usage
 
