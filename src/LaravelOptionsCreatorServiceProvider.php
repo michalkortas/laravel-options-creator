@@ -15,7 +15,7 @@ class LaravelOptionsCreatorServiceProvider extends ServiceProvider
 
         $this->publishes([
             __DIR__.'/resources/assets' => public_path('optionscreator'),
-        ], 'public');
+        ], 'opc');
 
         $this->loadViewComponentsAs('optionscreator', [
             Select::class,
