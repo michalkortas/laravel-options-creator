@@ -3,6 +3,8 @@ Wrapper that helps create options at select element dynamically
 
 # Installation
 
+<strong>Warning! This component use Bootstrap Modal!</strong>
+
 ``` 
 composer require michalkortas/laravel-options-creator
 ```
@@ -23,7 +25,8 @@ Add new stacks before end of <body> tag.
 </body>
 ```
 
-Wrap your select with new tag
+Wrap your select with new tag.
+You can use some parameters to configure modal.
 
 ```
   <x-optionscreator-select
