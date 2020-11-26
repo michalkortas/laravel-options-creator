@@ -55,6 +55,7 @@
                     errorText: '{!! $errorText !!}',
                     successValueKey: '{!! $successValueKey !!}',
                     successTextKey: '{!! $successTextKey !!}',
+                    setNewValue: '{!! (int)$setNewValue !!}',
                 }
                 initOptionsCreator(config)
             });

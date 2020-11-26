@@ -55,7 +55,9 @@ function initOptionsCreator(config) {
             newOption.value = jsonData[config.successValueKey];
 
             input.appendChild(newOption);
-            input.value = newOption.value;
+
+            if(config.setNewValue !== undefined && config.setNewValue !== null && config.setNewValue === 1)
+                input.value = newOption.value;
 
             let modal = document.getElementById(`optionscreator_modal_${config.uuid}`);
             $(modal).modal('hide');
