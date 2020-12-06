@@ -3,12 +3,15 @@ function initOptionsCreator(config) {
     const forms = document.querySelectorAll(`.optionscreator-form[data-uuid="${config.uuid}"]`);
 
     for (const saveButton of saveButtons) {
-        saveButton.onclick = saveButtonOnClick;
+        saveButton.onclick = (e) => {
+            e.preventDefault();
+            saveButtonOnClick(e.target);
+        };
     }
 
     for (const form of forms) {
         form.onsubmit = (e) => {
-            e.preventDefault()
+            e.preventDefault();
         };
     }
 
