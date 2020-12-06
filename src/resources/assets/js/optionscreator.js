@@ -3,19 +3,22 @@ function initOptionsCreator(config) {
     const forms = document.querySelectorAll(`.optionscreator-form[data-uuid="${config.uuid}"]`);
 
     for (const saveButton of saveButtons) {
-        saveButton.onclick = saveButtonOnClick;
+        saveButton.onclick = (e) => {
+            e.preventDefault();
+            saveButtonOnClick(e.target);
+        };
     }
 
     for (const form of forms) {
         form.onsubmit = (e) => {
-            e.preventDefault()
+            e.preventDefault();
         };
     }
 
-    function saveButtonOnClick() {
-        document.dispatchEvent(new Event('optionscreator.on.saveButtonClick'));
+    function saveButtonOnClick(button) {
         const uuid = config.uuid
-        const button = this;
+
+        button.dispatchEvent(new Event('optionscreator.on.saveButtonClick'));
 
         clearMessages();
 
@@ -38,19 +41,47 @@ function initOptionsCreator(config) {
         const section = document.querySelector(`.optionscreator[data-uuid="${uuid}"]`);
 
         if(section === null)
-            throw new Error(`Options Creator section with UUID: ${uuid} not found!`);
+            return Promise.reject(`Options Creator section with UUID: ${uuid} not found!`);
 
         const url = section.getAttribute('data-url');
 
         if(url === null)
-            throw new Error(`URL for UUID: ${uuid} cannot be empty`);
+            return Promise.reject(`URL for UUID: ${uuid} cannot be empty`);
 
         const form = document.querySelector(`.optionscreator-form[data-uuid="${uuid}"]`);
 
         if(form === null)
-            throw new Error(`Form for UUID: ${uuid} not found`);
+            return Promise.reject(`Form for UUID: ${uuid} not found`);
 
-        return axios.post(url, new FormData(form));
+        const inputs = document.querySelectorAll('input[required], select[required], textarea[required]');
+
+        let isAnyError = false;
+
+        for(let input of inputs) {
+            let parent = input.closest('.bootstrap-select');
+            console.log(parent)
+
+            if(input.value === '') {
+                input.classList.add('is-invalid');
+
+                if(parent !== null)
+                    parent.classList.add('is-invalid');
+            }
+            else {
+                input.classList.remove('is-invalid');
+
+                if(parent !== null)
+                    parent.classList.remove('is-invalid');
+                isAnyError = true;
+            }
+        }
+
+        if(isAnyError) {
+            return Promise.reject(`Complete the form ${uuid} correctly!`)
+        }
+        else {
+            return axios.post(url, new FormData(form));
+        }
     }
 
     function responseCallback(response) {
