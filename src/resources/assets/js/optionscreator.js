@@ -53,7 +53,7 @@ function initOptionsCreator(config) {
         if(form === null)
             return Promise.reject(`Form for UUID: ${uuid} not found`);
 
-        const inputs = document.querySelectorAll('input[required], select[required], textarea[required]');
+        const inputs = form.querySelectorAll('input[required], select[required], textarea[required]');
 
         let isAnyError = false;
 
