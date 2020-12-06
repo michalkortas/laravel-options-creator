@@ -59,7 +59,6 @@ function initOptionsCreator(config) {
 
         for(let input of inputs) {
             let parent = input.closest('.bootstrap-select');
-            console.log(parent)
 
             if(input.value === '') {
                 input.classList.add('is-invalid');
