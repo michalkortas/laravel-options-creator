@@ -15,10 +15,10 @@ function initOptionsCreator(config) {
         };
     }
 
-    function saveButtonOnClick() {
-        document.dispatchEvent(new Event('optionscreator.on.saveButtonClick'));
+    function saveButtonOnClick(button) {
         const uuid = config.uuid
-        const button = this;
+
+        button.dispatchEvent(new Event('optionscreator.on.saveButtonClick'));
 
         clearMessages();
 
