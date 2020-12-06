@@ -28,12 +28,12 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        @component($component) @endcomponent
+                        @component($component, $variables) @endcomponent
 
                         <div class="alert alert-danger d-none optionscreator-danger mt-3" data-uuid="{{$uuid}}"></div>
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn shadow-sm btn-success optionscreator-save" data-uuid="{{$uuid}}"><i class="fas fa-save"></i> {{$saveButtonTitle}}</button>
+                        <button type="button" class="btn shadow-sm btn-success optionscreator-save" data-uuid="{{$uuid}}"><i class="fas fa-save"></i> {{$saveButtonTitle}}</button>
                     </div>
                 </div>
             </form>
@@ -44,22 +44,24 @@
 @once
     @push('scripts')
         <script src="{{asset('optionscreator/js/optionscreator.js')}}"></script>
-        <script>
-            window.addEventListener('load', function () {
-                let config = {
-                    uuid: '{!! $uuid !!}',
-                    saveButtonTitle: '{!! $saveButtonTitle !!}',
-                    loadingText: '{!! $loadingText !!}',
-                    url: '{!! $url !!}',
-                    successText: '{!! $successText !!}',
-                    errorText: '{!! $errorText !!}',
-                    successValueKey: '{!! $successValueKey !!}',
-                    successTextKey: '{!! $successTextKey !!}',
-                    setNewValue: '{!! $setNewValue !!}',
-                }
-                initOptionsCreator(config)
-            });
-        </script>
     @endpush
 @endonce
+@push('scripts')
+    <script>
+        window.addEventListener('load', function () {
+            let config = {
+                uuid: '{!! $uuid !!}',
+                saveButtonTitle: '{!! $saveButtonTitle !!}',
+                loadingText: '{!! $loadingText !!}',
+                url: '{!! $url !!}',
+                successText: '{!! $successText !!}',
+                errorText: '{!! $errorText !!}',
+                successValueKey: '{!! $successValueKey !!}',
+                successTextKey: '{!! $successTextKey !!}',
+                setNewValue: '{!! $setNewValue !!}',
+            }
+            initOptionsCreator(config)
+        });
+    </script>
+@endpush
 
