@@ -61,17 +61,19 @@ function initOptionsCreator(config) {
             let parent = input.closest('.bootstrap-select');
 
             if(input.value === '') {
-                input.classList.add('is-invalid');
+                isAnyError = true;
 
-                if(parent !== null)
+                input.classList.add('is-invalid');
+                if(parent !== null) {
                     parent.classList.add('is-invalid');
+                }
             }
             else {
-                input.classList.remove('is-invalid');
 
-                if(parent !== null)
+                input.classList.remove('is-invalid');
+                if(parent !== null) {
                     parent.classList.remove('is-invalid');
-                isAnyError = true;
+                }
             }
         }
 
