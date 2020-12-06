@@ -41,17 +41,17 @@ function initOptionsCreator(config) {
         const section = document.querySelector(`.optionscreator[data-uuid="${uuid}"]`);
 
         if(section === null)
-            throw new Error(`Options Creator section with UUID: ${uuid} not found!`);
+            return Promise.reject(`Options Creator section with UUID: ${uuid} not found!`);
 
         const url = section.getAttribute('data-url');
 
         if(url === null)
-            throw new Error(`URL for UUID: ${uuid} cannot be empty`);
+            return Promise.reject(`URL for UUID: ${uuid} cannot be empty`);
 
         const form = document.querySelector(`.optionscreator-form[data-uuid="${uuid}"]`);
 
         if(form === null)
-            throw new Error(`Form for UUID: ${uuid} not found`);
+            return Promise.reject(`Form for UUID: ${uuid} not found`);
 
         return axios.post(url, new FormData(form));
     }
