@@ -53,7 +53,35 @@ function initOptionsCreator(config) {
         if(form === null)
             return Promise.reject(`Form for UUID: ${uuid} not found`);
 
-        return axios.post(url, new FormData(form));
+        const inputs = document.querySelectorAll('input[required], select[required], textarea[required]');
+
+        let isAnyError = false;
+
+        for(let input of inputs) {
+            let parent = input.closest('.bootstrap-select');
+            console.log(parent)
+
+            if(input.value === '') {
+                input.classList.add('is-invalid');
+
+                if(parent !== null)
+                    parent.classList.add('is-invalid');
+            }
+            else {
+                input.classList.remove('is-invalid');
+
+                if(parent !== null)
+                    parent.classList.remove('is-invalid');
+                isAnyError = true;
+            }
+        }
+
+        if(isAnyError) {
+            return Promise.reject(`Complete the form ${uuid} correctly!`)
+        }
+        else {
+            return axios.post(url, new FormData(form));
+        }
     }
 
     function responseCallback(response) {
